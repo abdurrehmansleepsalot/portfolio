@@ -61,6 +61,13 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         card.classList.add("visible");
         card.removeAttribute("aria-hidden");
       }
+      // Trigger the roles dropdown after the card appears
+      setTimeout(function () {
+        var dropdown = document.getElementById("hero-roles-dropdown");
+        if (dropdown) {
+          dropdown.classList.add("visible");
+        }
+      }, 400);
     }, 500);
   }
 
