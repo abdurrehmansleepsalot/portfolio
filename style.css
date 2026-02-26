@@ -2,19 +2,19 @@
    CSS CUSTOM PROPERTIES
    ============================================================ */
 :root {
-  --bg-primary: #050510;
-  --bg-secondary: #0a0a1a;
-  --bg-card: #0f0f1e;
-  --accent-primary: #a855f7;
-  --accent-secondary: #ec4899;
-  --accent-glow: #c084fc;
-  --accent-medium: #3b82f6;
-  --text-primary: #e2e8f0;
-  --text-secondary: #94a3b8;
-  --text-muted: #4a5568;
-  --border-color: #1e1e3a;
-  --border-accent: rgba(168, 85, 247, 0.4);
-  --glow-blue: 0 0 20px rgba(168, 85, 247, 0.3);
+  --bg-primary: #06061a;
+  --bg-secondary: #0B0A31;
+  --bg-card: #0e0e2a;
+  --accent-primary: #FFD3E9;
+  --accent-secondary: #FFB6D9;
+  --accent-glow: #FFE0F0;
+  --accent-medium: #d4a8c8;
+  --text-primary: #f0f0f8;
+  --text-secondary: #c8c8e0;
+  --text-muted: #7a7a9e;
+  --border-color: #1a1a40;
+  --border-accent: rgba(255, 211, 233, 0.4);
+  --glow-blue: 0 0 20px rgba(255, 211, 233, 0.3);
   --font-heading: "Orbitron", sans-serif;
   --font-body: "Raleway", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -126,7 +126,7 @@ img {
 }
 
 .navbar.scrolled {
-  background: rgba(5, 5, 16, 0.88);
+  background: rgba(6, 6, 26, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
@@ -146,7 +146,7 @@ img {
   font-family: var(--font-mono);
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--accent-secondary);
+  color: var(--accent-primary);
   transition: text-shadow var(--transition);
 }
 
@@ -247,13 +247,13 @@ img {
 .blob {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.55;
+  opacity: 0.35;
 }
 
 .blob-1 {
   width: 700px;
   height: 700px;
-  background: #7b2ff7;
+  background: #1a1050;
   filter: blur(110px);
   top: -150px;
   left: -150px;
@@ -263,7 +263,7 @@ img {
 .blob-2 {
   width: 600px;
   height: 600px;
-  background: #ec4899;
+  background: #FFD3E9;
   filter: blur(100px);
   bottom: -120px;
   right: -120px;
@@ -273,7 +273,7 @@ img {
 .blob-3 {
   width: 450px;
   height: 450px;
-  background: #3b82f6;
+  background: #0B0A31;
   filter: blur(90px);
   top: 50%;
   left: 50%;
@@ -284,7 +284,7 @@ img {
 .blob-4 {
   width: 400px;
   height: 400px;
-  background: #9333ea;
+  background: #2a1a4a;
   filter: blur(100px);
   top: 15%;
   right: 8%;
@@ -328,14 +328,14 @@ img {
   line-height: 1.1;
   letter-spacing: 0.15em;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-glow));
+  background: linear-gradient(135deg, #FFB6D9, #FFE0F0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .cursor {
-  -webkit-text-fill-color: var(--accent-secondary);
+  -webkit-text-fill-color: #FFD3E9;
   animation: blink 1s step-end infinite;
 }
 
@@ -376,10 +376,10 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 0.6rem;
-  background: rgba(15, 15, 30, 0.65);
+  background: rgba(11, 10, 49, 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(168, 85, 247, 0.35);
+  border: 1px solid rgba(255, 211, 233, 0.3);
   border-radius: 16px;
   padding: 1.25rem 2rem;
   max-width: 280px;
@@ -398,14 +398,14 @@ img {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(135deg, #FFD3E9, #FFB6D9);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 700;
-  color: #fff;
+  color: #0B0A31;
   letter-spacing: 0.05em;
 }
 
@@ -468,7 +468,7 @@ img {
 }
 
 .btn-outline:hover {
-  background: rgba(168, 85, 247, 0.1);
+  background: rgba(255, 211, 233, 0.1);
   transform: translateY(-3px);
   box-shadow: var(--glow-blue);
 }
@@ -512,6 +512,60 @@ img {
 }
 
 /* ============================================================
+   HERO ROLES DROPDOWN — window that drops down from behind the name
+   ============================================================ */
+.hero-roles-dropdown {
+  position: relative;
+  margin: 0 auto 1.5rem;
+  max-width: 320px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.5s ease;
+}
+
+.hero-roles-dropdown.visible {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.roles-window {
+  background: rgba(11, 10, 49, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 211, 233, 0.25);
+  border-radius: 14px;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.role-item {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--accent-primary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.hero-roles-dropdown.visible .role-item:nth-child(1) {
+  opacity: 1; transform: translateY(0); transition-delay: 0.2s;
+}
+.hero-roles-dropdown.visible .role-item:nth-child(2) {
+  opacity: 1; transform: translateY(0); transition-delay: 0.4s;
+}
+.hero-roles-dropdown.visible .role-item:nth-child(3) {
+  opacity: 1; transform: translateY(0); transition-delay: 0.6s;
+}
+
+/* ============================================================
    SECTIONS (GENERIC)
    ============================================================ */
 .section {
@@ -538,7 +592,7 @@ img {
   display: block;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-glow));
+  background: linear-gradient(90deg, #FFD3E9, #FFE0F0);
   margin: 0.75rem auto 0;
   border-radius: 2px;
 }
@@ -651,8 +705,8 @@ img {
 }
 
 .skill-tag {
-  background: rgba(168, 85, 247, 0.08);
-  border: 1px solid rgba(168, 85, 247, 0.25);
+  background: rgba(255, 211, 233, 0.08);
+  border: 1px solid rgba(255, 211, 233, 0.25);
   color: var(--accent-glow);
   font-size: 0.78rem;
   padding: 0.3rem 0.7rem;
@@ -662,8 +716,8 @@ img {
 }
 
 .skill-tag:hover {
-  background: rgba(168, 85, 247, 0.18);
-  box-shadow: 0 0 8px rgba(168, 85, 247, 0.35);
+  background: rgba(255, 211, 233, 0.18);
+  box-shadow: 0 0 8px rgba(255, 211, 233, 0.35);
 }
 
 /* ============================================================
@@ -689,7 +743,7 @@ img {
 
 .project-card:hover {
   border-color: var(--border-accent);
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 20px rgba(255, 211, 233, 0.3);
   transform: translateY(-6px);
 }
 
@@ -746,8 +800,8 @@ img {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--accent-medium);
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: rgba(212, 168, 200, 0.08);
+  border: 1px solid rgba(212, 168, 200, 0.25);
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
 }
@@ -861,7 +915,7 @@ img {
     top: var(--navbar-height);
     left: 0;
     right: 0;
-    background: rgba(5, 5, 16, 0.97);
+    background: rgba(6, 6, 26, 0.97);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     flex-direction: column;
