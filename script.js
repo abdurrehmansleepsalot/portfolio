@@ -1,4 +1,4 @@
-/* global document, window, requestAnimationFrame, cancelAnimationFrame */
+/* global document, window */
 "use strict";
 
 // ============================================================
@@ -54,11 +54,23 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   var index = 0;
   var delay = 100;
 
+  function onTypingDone() {
+    setTimeout(function () {
+      var card = document.getElementById("profile-card");
+      if (card) {
+        card.classList.add("visible");
+        card.removeAttribute("aria-hidden");
+      }
+    }, 500);
+  }
+
   function type() {
     if (index < text.length) {
       el.textContent += text.charAt(index);
       index++;
       setTimeout(type, delay);
+    } else {
+      onTypingDone();
     }
   }
 
@@ -101,78 +113,4 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   elements.forEach(function (el) {
     observer.observe(el);
   });
-})();
-
-// ============================================================
-// GRADIENT MESH BLOB BACKGROUND — hero canvas
-// ============================================================
-(function initBlobBackground() {
-  var canvas = document.getElementById("bg-canvas");
-  if (!canvas) return;
-
-  var ctx = canvas.getContext("2d");
-  var animationId = null;
-
-  var blobs = [
-    { x: 0.2, y: 0.3, r: 0.35, color: "rgba(30, 58, 95, 0.55)", vx: 0.00018, vy: 0.00012 },
-    { x: 0.75, y: 0.6, r: 0.3,  color: "rgba(15, 36, 68, 0.5)",  vx: -0.00014, vy: 0.00016 },
-    { x: 0.5,  y: 0.15, r: 0.28, color: "rgba(26, 26, 78, 0.45)", vx: 0.00012, vy: -0.00018 },
-    { x: 0.85, y: 0.2, r: 0.22, color: "rgba(13, 27, 42, 0.4)",  vx: -0.00016, vy: 0.00014 }
-  ];
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-
-  window.addEventListener("resize", resize);
-
-  function drawBlob(blob) {
-    var cx = blob.x * canvas.width;
-    var cy = blob.y * canvas.height;
-    var radius = blob.r * Math.min(canvas.width, canvas.height);
-    var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
-    grad.addColorStop(0, blob.color);
-    grad.addColorStop(1, "rgba(5, 5, 16, 0)");
-    ctx.beginPath();
-    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-    ctx.fillStyle = grad;
-    ctx.fill();
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    blobs.forEach(function (blob) {
-      blob.x += blob.vx;
-      blob.y += blob.vy;
-
-      if (blob.x < 0 || blob.x > 1) blob.vx *= -1;
-      if (blob.y < 0 || blob.y > 1) blob.vy *= -1;
-
-      drawBlob(blob);
-    });
-
-    animationId = requestAnimationFrame(animate);
-  }
-
-  if ("IntersectionObserver" in window) {
-    var heroObserver = new IntersectionObserver(
-      function (entries) {
-        if (entries[0].isIntersecting) {
-          if (!animationId) animate();
-        } else {
-          if (animationId) {
-            cancelAnimationFrame(animationId);
-            animationId = null;
-          }
-        }
-      },
-      { threshold: 0 }
-    );
-    heroObserver.observe(canvas);
-  }
-
-  resize();
-  animate();
 })();
