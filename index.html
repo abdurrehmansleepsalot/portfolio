@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Abdur Rehman — Coder, Photographer, Creative. Portfolio showcasing projects in C++, Python, JavaScript, and visual media." />
-  <meta property="og:title" content="Abdur Rehman | Portfolio" />
-  <meta property="og:description" content="Coder • Photographer • Creative — Portfolio of Abdur Rehman" />
+  <meta name="description" content="Muhammad Abdur Rehman — Data Science student, Coder, Photographer, Creative. Portfolio showcasing projects in C++, Python, IoT, and visual media." />
+  <meta property="og:title" content="Muhammad Abdur Rehman | Portfolio" />
+  <meta property="og:description" content="Coder • Photographer • Creative — Portfolio of Muhammad Abdur Rehman" />
   <meta property="og:type" content="website" />
-  <title>Abdur Rehman | Portfolio</title>
+  <title>Muhammad Abdur Rehman | Portfolio</title>
   <!-- Emoji favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -38,13 +38,14 @@
 
   <!-- ===== HERO SECTION ===== -->
   <section class="hero" id="hero">
-    <canvas id="particles-canvas"></canvas>
+    <canvas id="bg-canvas"></canvas>
     <div class="hero-content">
       <p class="hero-greeting">Hello, I'm</p>
       <h1 class="hero-name">
         <span id="typed-name"></span><span class="cursor">|</span>
       </h1>
       <p class="hero-tagline">Coder &bull; Photographer &bull; Creative</p>
+      <p class="hero-quote"><em>"In an attempt to reach perfection you become good at things!"</em></p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">View My Work</a>
         <a href="#contact" class="btn btn-outline">Get In Touch</a>
@@ -62,25 +63,22 @@
       <div class="about-grid">
         <div class="about-text fade-in">
           <p>
-            I'm <strong>Abdur Rehman</strong> — a passionate developer and professional photographer who thrives at the
-            intersection of technology and creativity. Whether I'm architecting efficient algorithms or composing the
-            perfect shot, I bring the same meticulous attention to detail to everything I do.
+            I'm <strong>Muhammad Abdur Rehman</strong> — a Data Science student at <strong>Punjab University</strong>,
+            passionate about coding and photography. I thrive at the intersection of technology and creativity.
           </p>
           <p>
-            I love the art of <strong>dry-running, debugging,</strong> and dissecting problems until they yield. There's
-            something deeply satisfying about tracing a bug to its root or optimising a loop to run in half the time.
-            I'm always learning — currently deepening my expertise in data structures, algorithms, and machine learning.
+            I love the art of <strong>dry-running, debugging,</strong> and problem-solving — there's something
+            deeply satisfying about tracing a bug to its root or engineering an elegant solution from scratch.
           </p>
           <p>
-            On the creative side, I'm a proficient photographer and video editor. I work with
-            <strong>Adobe Lightroom, Adobe Photoshop,</strong> and <strong>DaVinci Resolve</strong> to produce visuals
-            that tell compelling stories. My technical background makes my creative work precise, and my creative eye
-            makes my technical work beautiful.
+            As a professional photographer, I'm proficient in <strong>Adobe Lightroom, Photoshop,</strong> and
+            <strong>DaVinci Resolve</strong>. I combine technical precision with creative vision to produce
+            work that is both functional and beautiful.
           </p>
         </div>
         <div class="about-stats fade-in">
           <div class="stat-card">
-            <span class="stat-num">6+</span>
+            <span class="stat-num">5+</span>
             <span class="stat-label">Projects</span>
           </div>
           <div class="stat-card">
@@ -158,38 +156,60 @@
 
         <article class="project-card fade-in">
           <div class="project-header">
-            <span class="project-icon">📊</span>
+            <span class="project-icon">🎬</span>
             <div class="project-links">
-              <a href="https://github.com/abdurrehmansleepsalot/Viral-Reel-predictibility" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Viral Reel Predictability on GitHub">
+              <a href="https://github.com/abdurrehmansleepsalot/Viral-Reel-predictibility" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View ViralPredict on GitHub">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
               </a>
             </div>
           </div>
-          <h3 class="project-title">Viral Reel Predictability</h3>
-          <p class="project-desc">ML/Data Science project analysing viral shorts &amp; reels performance using exploratory data analysis and predictive modelling.</p>
+          <h3 class="project-title">ViralPredict — AI-Powered Content Analytics</h3>
+          <p class="project-desc">An end-to-end machine learning pipeline that predicts viral potential of short-form video content. Features exploratory data analysis with rich visualizations, a trained Random Forest model, and an interactive Streamlit dashboard for real-time predictions and performance insights.</p>
           <div class="project-tech">
             <span class="tech-tag">Python</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">Streamlit</span>
             <span class="tech-tag">Pandas</span>
             <span class="tech-tag">Seaborn</span>
-            <span class="tech-tag">Matplotlib</span>
           </div>
         </article>
 
         <article class="project-card fade-in">
           <div class="project-header">
-            <span class="project-icon">🔢</span>
+            <span class="project-icon">🔒</span>
+            <div class="project-links">
+              <a href="https://github.com/abdurrehmansleepsalot/Discrete-Project-Smart-door-system" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Smart Door Lock on GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Smart Door Lock — IoT Security System</h3>
+          <p class="project-desc">A dual-authentication IoT security system built on ESP32. Combines Bluetooth wireless control with a physical Boolean logic puzzle for manual override. Features automatic re-locking, motor state management, and battery-efficient servo control.</p>
+          <div class="project-tech">
+            <span class="tech-tag">C++</span>
+            <span class="tech-tag">ESP32</span>
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">Bluetooth</span>
+            <span class="tech-tag">IoT</span>
+          </div>
+        </article>
+
+        <article class="project-card fade-in">
+          <div class="project-header">
+            <span class="project-icon">📦</span>
             <div class="project-links">
               <a href="https://github.com/abdurrehmansleepsalot/NDarray" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View NDarray on GitHub">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
               </a>
             </div>
           </div>
-          <h3 class="project-title">NDarray</h3>
-          <p class="project-desc">Custom N-dimensional array implementation in C++ with dynamic memory management, move semantics, and multi-dimensional indexing.</p>
+          <h3 class="project-title">NDarray — N-Dimensional Array Engine</h3>
+          <p class="project-desc">A custom-built N-dimensional array library in C++ implementing dynamic memory management, move semantics, and multi-dimensional indexing with linear index computation. Designed for efficient numerical data handling from the ground up.</p>
           <div class="project-tech">
             <span class="tech-tag">C++</span>
             <span class="tech-tag">OOP</span>
             <span class="tech-tag">Memory Management</span>
+            <span class="tech-tag">Templates</span>
           </div>
         </article>
 
@@ -202,30 +222,12 @@
               </a>
             </div>
           </div>
-          <h3 class="project-title">Snake Game</h3>
-          <p class="project-desc">Classic Snake game built with solid OOP principles in C++, featuring clean game-loop architecture and modular design.</p>
+          <h3 class="project-title">Snake Game — Classic Arcade Reimagined</h3>
+          <p class="project-desc">A console-based Snake game engineered with clean object-oriented architecture. Demonstrates real-time game loop design, collision detection, and state management — all built from scratch without external game libraries.</p>
           <div class="project-tech">
             <span class="tech-tag">C++</span>
             <span class="tech-tag">OOP</span>
-            <span class="tech-tag">Game Logic</span>
-          </div>
-        </article>
-
-        <article class="project-card fade-in">
-          <div class="project-header">
-            <span class="project-icon">📐</span>
-            <div class="project-links">
-              <a href="https://github.com/abdurrehmansleepsalot/Polynomials" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Polynomials on GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Polynomials</h3>
-          <p class="project-desc">Polynomial math library in C++ supporting arithmetic operations, derivatives, antiderivatives, and operator overloading.</p>
-          <div class="project-tech">
-            <span class="tech-tag">C++</span>
-            <span class="tech-tag">Operator Overloading</span>
-            <span class="tech-tag">Math</span>
+            <span class="tech-tag">Game Development</span>
           </div>
         </article>
 
@@ -238,30 +240,13 @@
               </a>
             </div>
           </div>
-          <h3 class="project-title">Cash Memo</h3>
-          <p class="project-desc">Billing and invoice generation system in C++ with formatted receipt output and clean OOP design patterns.</p>
+          <h3 class="project-title">Cash Memo — Automated Billing System</h3>
+          <p class="project-desc">A professional invoice and billing system featuring structured receipt generation with formatted output, multi-item support, and automatic grand total computation. Built with modular OOP design using multi-file architecture.</p>
           <div class="project-tech">
             <span class="tech-tag">C++</span>
             <span class="tech-tag">OOP</span>
             <span class="tech-tag">File I/O</span>
-          </div>
-        </article>
-
-        <article class="project-card fade-in">
-          <div class="project-header">
-            <span class="project-icon">🔗</span>
-            <div class="project-links">
-              <a href="https://github.com/abdurrehmansleepsalot/linked-list" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Linked List on GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Linked List</h3>
-          <p class="project-desc">Templated singly linked list implementation with full CRUD operations, iterator support, and clean C++ template metaprogramming.</p>
-          <div class="project-tech">
-            <span class="tech-tag">C++</span>
-            <span class="tech-tag">Templates</span>
-            <span class="tech-tag">Data Structures</span>
+            <span class="tech-tag">Multi-file Architecture</span>
           </div>
         </article>
 
@@ -277,11 +262,10 @@
         Have a project idea, collaboration in mind, or just want to say hi? My inbox is always open.
       </p>
       <div class="contact-links fade-in">
-        <a href="mailto:abdurrehman@email.com" class="contact-card">
-          <!-- Replace abdurrehman@email.com with your actual email address -->
+        <a href="mailto:moon@gmail.com" class="contact-card">
           <span class="contact-card-icon">✉️</span>
           <span class="contact-card-label">Email Me</span>
-          <span class="contact-card-value">abdurrehman@email.com</span>
+          <span class="contact-card-value">moon@gmail.com</span>
         </a>
         <a href="https://github.com/abdurrehmansleepsalot" target="_blank" rel="noopener noreferrer" class="contact-card">
           <span class="contact-card-icon">
@@ -290,6 +274,13 @@
           <span class="contact-card-label">GitHub</span>
           <span class="contact-card-value">abdurrehmansleepsalot</span>
         </a>
+        <a href="https://www.instagram.com/pixsbymoon/" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <span class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </span>
+          <span class="contact-card-label">Instagram</span>
+          <span class="contact-card-value">pixsbymoon</span>
+        </a>
       </div>
     </div>
   </section>
@@ -297,7 +288,7 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; <span id="footer-year"></span> Abdur Rehman. Built with ☕ and code.</p>
+      <p>&copy; <span id="footer-year"></span> Muhammad Abdur Rehman. Built with ☕ and code.</p>
     </div>
   </footer>
 
