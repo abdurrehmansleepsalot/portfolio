@@ -5,10 +5,10 @@
 // NAVBAR — scroll class + hamburger toggle
 // ============================================================
 (function initNavbar() {
-  const navbar = document.getElementById("navbar");
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("nav-links");
-  const allNavLinks = navLinks.querySelectorAll(".nav-link");
+  var navbar = document.getElementById("navbar");
+  var hamburger = document.getElementById("hamburger");
+  var navLinks = document.getElementById("nav-links");
+  var allNavLinks = navLinks.querySelectorAll(".nav-link");
 
   window.addEventListener("scroll", function () {
     if (window.scrollY > 30) {
@@ -19,12 +19,11 @@
   });
 
   hamburger.addEventListener("click", function () {
-    const isOpen = navLinks.classList.toggle("open");
+    var isOpen = navLinks.classList.toggle("open");
     hamburger.classList.toggle("open", isOpen);
     hamburger.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // Close menu when a link is clicked
   allNavLinks.forEach(function (link) {
     link.addEventListener("click", function () {
       navLinks.classList.remove("open");
@@ -35,11 +34,11 @@
 })();
 
 // ============================================================
-// SMOOTH SCROLL (polyfill for older browsers)
+// SMOOTH SCROLL
 // ============================================================
 document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   anchor.addEventListener("click", function (e) {
-    const target = document.querySelector(this.getAttribute("href"));
+    var target = document.querySelector(this.getAttribute("href"));
     if (!target) return;
     e.preventDefault();
     target.scrollIntoView({ behavior: "smooth" });
@@ -51,9 +50,9 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
 // ============================================================
 (function initTyping() {
   var el = document.getElementById("typed-name");
-  var text = "Abdur Rehman";
+  var text = "Muhammad Abdur Rehman";
   var index = 0;
-  var delay = 120;
+  var delay = 100;
 
   function type() {
     if (index < text.length) {
@@ -63,7 +62,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     }
   }
 
-  // Small initial pause before starting
   setTimeout(type, 600);
 })();
 
@@ -82,7 +80,6 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   var elements = document.querySelectorAll(".fade-in");
 
   if (!("IntersectionObserver" in window)) {
-    // Fallback: show everything immediately
     elements.forEach(function (el) {
       el.classList.add("visible");
     });
@@ -107,126 +104,58 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
 })();
 
 // ============================================================
-// PARTICLE CANVAS — hero background
+// GRADIENT MESH BLOB BACKGROUND — hero canvas
 // ============================================================
-(function initParticles() {
-  var canvas = document.getElementById("particles-canvas");
+(function initBlobBackground() {
+  var canvas = document.getElementById("bg-canvas");
   if (!canvas) return;
 
   var ctx = canvas.getContext("2d");
-  var particlesArray = [];
   var animationId = null;
-  var mouse = { x: null, y: null, radius: 120 };
 
-  // Config
-  var NUM_PARTICLES = 70;
-  var MAX_DISTANCE = 120;
-  var PIXELS_PER_PARTICLE = 10000; // one particle per this many pixels of canvas area
-  var PARTICLE_COLOR = "rgba(0, 240, 255, ";
-  var LINE_COLOR = "rgba(0, 240, 255, ";
+  var blobs = [
+    { x: 0.2, y: 0.3, r: 0.35, color: "rgba(30, 58, 95, 0.55)", vx: 0.00018, vy: 0.00012 },
+    { x: 0.75, y: 0.6, r: 0.3,  color: "rgba(15, 36, 68, 0.5)",  vx: -0.00014, vy: 0.00016 },
+    { x: 0.5,  y: 0.15, r: 0.28, color: "rgba(26, 26, 78, 0.45)", vx: 0.00012, vy: -0.00018 },
+    { x: 0.85, y: 0.2, r: 0.22, color: "rgba(13, 27, 42, 0.4)",  vx: -0.00016, vy: 0.00014 }
+  ];
 
   function resize() {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
   }
 
-  window.addEventListener("resize", function () {
-    resize();
-    initParticleArray();
-  });
+  window.addEventListener("resize", resize);
 
-  canvas.addEventListener("mousemove", function (e) {
-    var rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-
-  canvas.addEventListener("mouseleave", function () {
-    mouse.x = null;
-    mouse.y = null;
-  });
-
-  // Particle constructor
-  function Particle() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 2 + 0.5;
-    this.speedX = (Math.random() - 0.5) * 0.6;
-    this.speedY = (Math.random() - 0.5) * 0.6;
-    this.opacity = Math.random() * 0.5 + 0.2;
-  }
-
-  Particle.prototype.update = function () {
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    // Bounce off edges
-    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-
-    // Mouse repulsion
-    if (mouse.x !== null) {
-      var dx = this.x - mouse.x;
-      var dy = this.y - mouse.y;
-      var dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < mouse.radius) {
-        var force = (mouse.radius - dist) / mouse.radius;
-        this.x += (dx / dist) * force * 2.5;
-        this.y += (dy / dist) * force * 2.5;
-      }
-    }
-  };
-
-  Particle.prototype.draw = function () {
+  function drawBlob(blob) {
+    var cx = blob.x * canvas.width;
+    var cy = blob.y * canvas.height;
+    var radius = blob.r * Math.min(canvas.width, canvas.height);
+    var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+    grad.addColorStop(0, blob.color);
+    grad.addColorStop(1, "rgba(5, 5, 16, 0)");
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = PARTICLE_COLOR + this.opacity + ")";
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
     ctx.fill();
-  };
-
-  function initParticleArray() {
-    particlesArray = [];
-    // Scale particle count with canvas area
-    var count = Math.min(
-      NUM_PARTICLES,
-      Math.floor((canvas.width * canvas.height) / PIXELS_PER_PARTICLE)
-    );
-    for (var i = 0; i < count; i++) {
-      particlesArray.push(new Particle());
-    }
-  }
-
-  function connectParticles() {
-    var len = particlesArray.length;
-    for (var i = 0; i < len; i++) {
-      for (var j = i + 1; j < len; j++) {
-        var dx = particlesArray[i].x - particlesArray[j].x;
-        var dy = particlesArray[i].y - particlesArray[j].y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MAX_DISTANCE) {
-          var alpha = (1 - dist / MAX_DISTANCE) * 0.3;
-          ctx.beginPath();
-          ctx.strokeStyle = LINE_COLOR + alpha + ")";
-          ctx.lineWidth = 0.6;
-          ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-          ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-          ctx.stroke();
-        }
-      }
-    }
   }
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particlesArray.forEach(function (p) {
-      p.update();
-      p.draw();
+
+    blobs.forEach(function (blob) {
+      blob.x += blob.vx;
+      blob.y += blob.vy;
+
+      if (blob.x < 0 || blob.x > 1) blob.vx *= -1;
+      if (blob.y < 0 || blob.y > 1) blob.vy *= -1;
+
+      drawBlob(blob);
     });
-    connectParticles();
+
     animationId = requestAnimationFrame(animate);
   }
 
-  // Pause animation when hero is not visible (performance)
   if ("IntersectionObserver" in window) {
     var heroObserver = new IntersectionObserver(
       function (entries) {
@@ -245,6 +174,5 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   }
 
   resize();
-  initParticleArray();
   animate();
 })();
