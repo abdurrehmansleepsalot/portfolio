@@ -233,6 +233,22 @@ img {
   z-index: 1;
 }
 
+/* Linear gradient overlay — adds a cinematic backdrop to the hero */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 10, 49, 0.85) 0%,
+    rgba(26, 16, 80, 0.65) 40%,
+    rgba(255, 211, 233, 0.15) 75%,
+    rgba(11, 10, 49, 0.80) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
 /* ============================================================
    BACKGROUND BLOBS — neon gradient orbs
    ============================================================ */
