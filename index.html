@@ -18,6 +18,12 @@
 </head>
 <body>
 
+  <!-- Cinematic page-load overlay -->
+  <div id="page-loader" aria-hidden="true"></div>
+
+  <!-- Interactive particle canvas background -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
   <!-- Neon gradient background blobs -->
   <div class="bg-blobs" aria-hidden="true">
     <div class="blob blob-1"></div>
@@ -46,7 +52,18 @@
 
   <!-- ===== HERO SECTION ===== -->
   <section class="hero" id="hero">
+    <!-- Floating code symbols -->
+    <div class="hero-symbols" aria-hidden="true">
+      <span class="hero-symbol">&lt;</span>
+      <span class="hero-symbol">/&gt;</span>
+      <span class="hero-symbol">{}</span>
+      <span class="hero-symbol">;</span>
+      <span class="hero-symbol">()</span>
+      <span class="hero-symbol">&amp;&amp;</span>
+    </div>
     <div class="hero-content">
+      <!-- Glow burst behind the hero name -->
+      <div class="name-glow-burst" aria-hidden="true"></div>
       <p class="hero-greeting">Hello, I'm</p>
       <h1 class="hero-name">
         <span id="typed-name"></span><span class="cursor">|</span>
