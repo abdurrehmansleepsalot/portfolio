@@ -2,19 +2,19 @@
    CSS CUSTOM PROPERTIES
    ============================================================ */
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-card: #1a1a1a;
-  --accent-primary: #D4AF37;
-  --accent-secondary: #F4C430;
-  --accent-glow: #FFD700;
-  --accent-medium: #B8860B;
+  --bg-primary: #1A1A1D;
+  --bg-secondary: #121214;
+  --bg-card: #222225;
+  --accent-primary: #C3073F;
+  --accent-secondary: #950740;
+  --accent-glow: #C3073F;
+  --accent-medium: #6F2232;
   --text-primary: #f0f0f0;
   --text-secondary: #c0c0c0;
-  --text-muted: #808080;
-  --border-color: #2a2a2a;
-  --border-accent: rgba(212, 175, 55, 0.4);
-  --glow-blue: 0 0 20px rgba(212, 175, 55, 0.3);
+  --text-muted: #4E4E50;
+  --border-color: #4E4E50;
+  --border-accent: rgba(195, 7, 63, 0.4);
+  --glow-blue: 0 0 20px rgba(195, 7, 63, 0.3);
   --font-heading: "Orbitron", sans-serif;
   --font-body: "Raleway", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -126,7 +126,7 @@ img {
 }
 
 .navbar.scrolled {
-  background: rgba(6, 6, 26, 0.92);
+  background: rgba(26, 26, 29, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
@@ -240,10 +240,10 @@ img {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(10, 10, 10, 0.85) 0%,
-    rgba(20, 15, 0, 0.65) 40%,
-    rgba(212, 175, 55, 0.15) 75%,
-    rgba(10, 10, 10, 0.80) 100%
+    rgba(26, 26, 29, 0.85) 0%,
+    rgba(111, 34, 50, 0.65) 40%,
+    rgba(195, 7, 63, 0.15) 75%,
+    rgba(26, 26, 29, 0.80) 100%
   );
   z-index: 0;
   pointer-events: none;
@@ -269,7 +269,7 @@ img {
 .blob-1 {
   width: 700px;
   height: 700px;
-  background: #1a1a00;
+  background: #1A1A1D;
   filter: blur(110px);
   top: -150px;
   left: -150px;
@@ -279,7 +279,7 @@ img {
 .blob-2 {
   width: 600px;
   height: 600px;
-  background: #D4AF37;
+  background: #C3073F;
   filter: blur(100px);
   bottom: -120px;
   right: -120px;
@@ -289,7 +289,7 @@ img {
 .blob-3 {
   width: 450px;
   height: 450px;
-  background: #111111;
+  background: #121214;
   filter: blur(90px);
   top: 50%;
   left: 50%;
@@ -300,7 +300,7 @@ img {
 .blob-4 {
   width: 400px;
   height: 400px;
-  background: #2a2a00;
+  background: #6F2232;
   filter: blur(100px);
   top: 15%;
   right: 8%;
@@ -344,14 +344,14 @@ img {
   line-height: 1.1;
   letter-spacing: 0.15em;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #D4AF37, #FFD700);
+  background: linear-gradient(135deg, #950740, #C3073F);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .cursor {
-  -webkit-text-fill-color: #D4AF37;
+  -webkit-text-fill-color: #C3073F;
   animation: blink 1s step-end infinite;
 }
 
@@ -392,10 +392,10 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 0.6rem;
-  background: rgba(10, 10, 10, 0.65);
+  background: rgba(26, 26, 29, 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(195, 7, 63, 0.3);
   border-radius: 16px;
   padding: 1.25rem 2rem;
   max-width: 280px;
@@ -414,14 +414,14 @@ img {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #D4AF37, #F4C430);
+  background: linear-gradient(135deg, #C3073F, #950740);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 700;
-  color: #0a0a0a;
+  color: #ffffff;
   letter-spacing: 0.05em;
 }
 
@@ -468,7 +468,7 @@ img {
 
 .btn-primary {
   background: var(--accent-primary);
-  color: #0a0a0a;
+  color: #ffffff;
 }
 
 .btn-primary:hover {
@@ -484,7 +484,7 @@ img {
 }
 
 .btn-outline:hover {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(195, 7, 63, 0.1);
   transform: translateY(-3px);
   box-shadow: var(--glow-blue);
 }
@@ -543,10 +543,10 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 0.35rem;
-  background: rgba(10, 10, 10, 0.7);
+  background: rgba(26, 26, 29, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  border: 1px solid rgba(195, 7, 63, 0.25);
   border-radius: 0 0 14px 14px;
   padding: 1rem 2rem;
   transform: translateY(-100%);
@@ -617,7 +617,7 @@ img {
   display: block;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #D4AF37, #FFD700);
+  background: linear-gradient(90deg, #C3073F, #950740);
   margin: 0.75rem auto 0;
   border-radius: 2px;
 }
@@ -693,10 +693,10 @@ img {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(8px);
-  background: rgba(10, 10, 10, 0.9);
+  background: rgba(26, 26, 29, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(195, 7, 63, 0.3);
   border-radius: 10px;
   padding: 0.75rem 1rem;
   min-width: 160px;
@@ -739,7 +739,7 @@ img {
   left: 50%;
   transform: translateX(-50%);
   border: 6px solid transparent;
-  border-top-color: rgba(212, 175, 55, 0.3);
+  border-top-color: rgba(195, 7, 63, 0.3);
 }
 
 /* ============================================================
@@ -788,8 +788,8 @@ img {
 }
 
 .skill-tag {
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  background: rgba(195, 7, 63, 0.08);
+  border: 1px solid rgba(195, 7, 63, 0.25);
   color: var(--accent-glow);
   font-size: 0.78rem;
   padding: 0.3rem 0.7rem;
@@ -799,8 +799,8 @@ img {
 }
 
 .skill-tag:hover {
-  background: rgba(212, 175, 55, 0.18);
-  box-shadow: 0 0 8px rgba(212, 175, 55, 0.35);
+  background: rgba(195, 7, 63, 0.18);
+  box-shadow: 0 0 8px rgba(195, 7, 63, 0.35);
 }
 
 /* ============================================================
@@ -826,7 +826,7 @@ img {
 
 .project-card:hover {
   border-color: var(--border-accent);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 20px rgba(195, 7, 63, 0.3);
   transform: translateY(-6px);
 }
 
@@ -883,8 +883,8 @@ img {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--accent-medium);
-  background: rgba(184, 134, 11, 0.08);
-  border: 1px solid rgba(184, 134, 11, 0.25);
+  background: rgba(111, 34, 50, 0.08);
+  border: 1px solid rgba(111, 34, 50, 0.25);
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
 }
@@ -998,7 +998,7 @@ img {
     top: var(--navbar-height);
     left: 0;
     right: 0;
-    background: rgba(6, 6, 26, 0.97);
+    background: rgba(26, 26, 29, 0.97);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     flex-direction: column;
@@ -1119,7 +1119,7 @@ body.page-loaded .bg-blobs {
 
 /* Hero name — entrance + animated gradient shift */
 .hero-name {
-  background: linear-gradient(135deg, #D4AF37, #FFD700, #F4C430, #D4AF37, #FFD700);
+  background: linear-gradient(135deg, #950740, #C3073F, #950740, #C3073F, #950740);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -1152,7 +1152,7 @@ body.page-loaded .bg-blobs {
   width: 480px;
   max-width: 90vw;
   height: 110px;
-  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.45) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(195, 7, 63, 0.45) 0%, transparent 70%);
   left: 50%;
   top: 10%;
   transform: translateX(-50%);
@@ -1206,13 +1206,13 @@ body.page-loaded .bg-blobs {
    SCROLL INDICATOR — pulsing glow ring
    ============================================================ */
 .hero-scroll-indicator span {
-  border-color: rgba(212, 175, 55, 0.6);
+  border-color: rgba(195, 7, 63, 0.6);
   animation: scroll-indicator-pulse 2.2s ease-in-out infinite;
 }
 
 @keyframes scroll-indicator-pulse {
-  0%, 100% { box-shadow: 0 0 0 0   rgba(212, 175, 55, 0.5); }
-  50%       { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0);   }
+  0%, 100% { box-shadow: 0 0 0 0   rgba(195, 7, 63, 0.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(195, 7, 63, 0);   }
 }
 
 /* ============================================================
@@ -1401,9 +1401,9 @@ body.page-loaded .bg-blobs {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(212, 175, 55, 0.35) 25%,
-    rgba(255, 215, 0, 0.55) 50%,
-    rgba(212, 175, 55, 0.35) 75%,
+    rgba(195, 7, 63, 0.35) 25%,
+    rgba(195, 7, 63, 0.55) 50%,
+    rgba(195, 7, 63, 0.35) 75%,
     transparent 100%
   );
   background-size: 200% 100%;
