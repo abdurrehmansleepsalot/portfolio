@@ -1056,3 +1056,383 @@ img {
     align-items: center;
   }
 }
+
+/* ============================================================
+   PARTICLE CANVAS
+   ============================================================ */
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   PAGE LOADER OVERLAY
+   ============================================================ */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+#page-loader.loader-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   BACKGROUND BLOBS — scale in on page load
+   ============================================================ */
+.bg-blobs {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1.5s ease 0.5s, transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s;
+}
+
+body.page-loaded .bg-blobs {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================================
+   HERO CINEMATIC ENTRANCE ANIMATIONS
+   ============================================================ */
+@keyframes hero-element-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.hero-greeting {
+  animation: hero-element-in 0.8s ease 0.3s both;
+}
+
+/* Hero name — entrance + animated gradient shift */
+.hero-name {
+  background: linear-gradient(135deg, #FFB6D9, #FFE0F0, #FF8EC7, #FFD3E9, #FFB6D9);
+  background-size: 300% 300%;
+  animation: hero-element-in 0.8s ease 0.6s both, gradient-shift 9s ease 1.4s infinite;
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-quote {
+  animation: hero-element-in 0.8s ease 1.0s both;
+}
+
+.hero-cta {
+  animation: hero-element-in 0.8s ease 1.3s both;
+}
+
+.hero-scroll-indicator {
+  animation: hero-element-in 0.8s ease 1.6s both;
+}
+
+/* ============================================================
+   NAME GLOW BURST — radial pulse behind hero name on load
+   ============================================================ */
+.name-glow-burst {
+  position: absolute;
+  width: 480px;
+  max-width: 90vw;
+  height: 110px;
+  background: radial-gradient(ellipse at center, rgba(255, 211, 233, 0.45) 0%, transparent 70%);
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 0;
+  animation: name-glow-burst 2.2s ease 1s forwards;
+}
+
+@keyframes name-glow-burst {
+  0%   { opacity: 0; transform: translateX(-50%) scale(0.4); }
+  30%  { opacity: 0.8; transform: translateX(-50%) scale(1.15); }
+  65%  { opacity: 0.35; transform: translateX(-50%) scale(1); }
+  100% { opacity: 0.12; transform: translateX(-50%) scale(1); }
+}
+
+/* ============================================================
+   HERO SYMBOLS — floating code glyphs
+   ============================================================ */
+.hero-symbols {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-symbol {
+  position: absolute;
+  font-family: var(--font-mono);
+  color: var(--accent-primary);
+  opacity: 0.05;
+  user-select: none;
+  font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+  animation: float-symbol 8s ease-in-out infinite;
+}
+
+.hero-symbol:nth-child(1) { top: 14%; left: 7%;  animation-delay: 0s;   }
+.hero-symbol:nth-child(2) { top: 68%; left: 12%; animation-delay: 1.3s; }
+.hero-symbol:nth-child(3) { top: 18%; right: 9%; animation-delay: 0.9s; }
+.hero-symbol:nth-child(4) { top: 72%; right: 11%; animation-delay: 2.1s; }
+.hero-symbol:nth-child(5) { top: 42%; left: 4%;  animation-delay: 1.6s; }
+.hero-symbol:nth-child(6) { top: 38%; right: 5%; animation-delay: 0.4s; }
+
+@keyframes float-symbol {
+  0%,  100% { transform: translateY(0)     rotate(0deg);   }
+  50%        { transform: translateY(-18px) rotate(6deg);   }
+}
+
+/* ============================================================
+   SCROLL INDICATOR — pulsing glow ring
+   ============================================================ */
+.hero-scroll-indicator span {
+  border-color: rgba(255, 211, 233, 0.6);
+  animation: scroll-indicator-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes scroll-indicator-pulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(255, 211, 233, 0.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(255, 211, 233, 0);   }
+}
+
+/* ============================================================
+   SECTION TITLE — animated underline on reveal
+   ============================================================ */
+.section-title::after {
+  width: 0;
+  transition: width 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+}
+
+.section-title.visible::after {
+  width: 60px;
+}
+
+/* ============================================================
+   DIRECTIONAL SCROLL REVEALS (left / right)
+   ============================================================ */
+.fade-in[data-dir="left"] {
+  transform: translateX(-50px);
+}
+
+.fade-in[data-dir="right"] {
+  transform: translateX(50px);
+}
+
+.fade-in[data-dir].visible {
+  transform: translateX(0);
+}
+
+/* ============================================================
+   SKILL TAGS — stagger bounce-in when parent becomes visible
+   ============================================================ */
+.skill-category .skill-tag {
+  opacity: 0;
+  transform: scale(0.7) translateY(10px);
+}
+
+.skill-category.visible .skill-tag {
+  animation: tag-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.skill-category.visible .skill-tag:nth-child(1) { animation-delay: 0.05s; }
+.skill-category.visible .skill-tag:nth-child(2) { animation-delay: 0.15s; }
+.skill-category.visible .skill-tag:nth-child(3) { animation-delay: 0.25s; }
+.skill-category.visible .skill-tag:nth-child(4) { animation-delay: 0.35s; }
+.skill-category.visible .skill-tag:nth-child(5) { animation-delay: 0.45s; }
+.skill-category.visible .skill-tag:nth-child(6) { animation-delay: 0.55s; }
+
+@keyframes tag-pop {
+  from { opacity: 0; transform: scale(0.7) translateY(10px); }
+  to   { opacity: 1; transform: scale(1)   translateY(0);    }
+}
+
+/* ============================================================
+   SKILL TAGS — shimmer sweep on hover
+   ============================================================ */
+.skill-tag {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-tag::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.skill-tag:hover::after {
+  left: 130%;
+}
+
+/* ============================================================
+   TECH TAGS — shimmer sweep on hover
+   ============================================================ */
+.tech-tag {
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-tag::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.45s ease;
+  pointer-events: none;
+}
+
+.tech-tag:hover::after {
+  left: 130%;
+}
+
+/* ============================================================
+   BUTTON RIPPLE EFFECT
+   ============================================================ */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  transform: translate(-50%, -50%);
+  animation: ripple-expand 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ripple-expand {
+  from { width: 0;     height: 0;     opacity: 1; }
+  to   { width: 220px; height: 220px; opacity: 0; }
+}
+
+/* ============================================================
+   HERO NAME GLITCH
+   ============================================================ */
+@keyframes glitch {
+  0%,  100% { transform: translate(0); }
+  10%        { transform: translate(-3px, -1px) skewX(-1deg); }
+  20%        { transform: translate(3px,  1px)  skewX(1deg);  }
+  30%        { transform: translate(-2px,  2px); }
+  40%        { transform: translate(2px,  -2px); }
+  50%        { transform: translate(-1px,  0);   }
+  60%        { transform: translate(1px,   0);   }
+  70%        { transform: translate(0);          }
+}
+
+/* .hero-name.glitch-active is unused; glitch is driven by Web Animations API in script.js */
+
+/* ============================================================
+   AMBIENT ORBS — floating glow dots inside sections
+   ============================================================ */
+.ambient-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Ensure section content always sits above ambient orbs */
+.about-grid,
+.skills-grid,
+.projects-grid,
+.contact-links,
+.contact-intro,
+.section-title {
+  position: relative;
+  z-index: 1;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary);
+  animation: orb-float 6s ease-in-out infinite;
+}
+
+@keyframes orb-float {
+  0%,  100% { transform: translateY(0);    }
+  50%        { transform: translateY(-16px); }
+}
+
+/* ============================================================
+   SECTION DIVIDERS — animated gradient line
+   ============================================================ */
+.section-divider {
+  position: relative;
+  z-index: 1;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 211, 233, 0.35) 25%,
+    rgba(255, 224, 240, 0.55) 50%,
+    rgba(255, 211, 233, 0.35) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: divider-shimmer 4s ease-in-out infinite;
+  margin: 0;
+}
+
+@keyframes divider-shimmer {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* ============================================================
+   MOBILE — reduce / disable heavy canvas effects
+   ============================================================ */
+@media (max-width: 767px) {
+  .hero-symbols { display: none; }
+
+  .name-glow-burst {
+    width: 280px;
+  }
+}
+
+/* Ensure hero text elements stack above the name-glow-burst */
+.hero-greeting,
+.hero-name,
+.hero-quote,
+.hero-cta,
+.profile-card,
+.hero-roles-dropdown {
+  position: relative;
+  z-index: 1;
+}
