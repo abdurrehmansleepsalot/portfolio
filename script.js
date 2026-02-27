@@ -135,7 +135,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   var LINK_DIST = 120;
   var REPEL_DIST = 100;
   var REPEL_STRENGTH = 0.035;
-  var COLORS = ["#D4AF37", "#F4C430", "#FFD700"];
+  var COLORS = ["#C3073F", "#950740", "#6F2232"];
 
   var mouseX = -9999;
   var mouseY = -9999;
@@ -228,7 +228,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     ctx.shadowBlur = 0;
 
     // Draw constellation lines
-    ctx.strokeStyle = "#D4AF37";
+    ctx.strokeStyle = "#C3073F";
     ctx.lineWidth = 0.5;
     for (var i = 0; i < len - 1; i++) {
       var pi = particles[i];
@@ -329,7 +329,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
       card.style.transform =
         "translateY(-6px) perspective(600px) rotateX(" + rotX + "deg) rotateY(" + rotY + "deg)";
       card.style.background =
-        "radial-gradient(circle at " + gx + "% " + gy + "%, rgba(212,175,55,0.12) 0%, var(--bg-card) 65%)";
+        "radial-gradient(circle at " + gx + "% " + gy + "%, rgba(195,7,63,0.12) 0%, var(--bg-card) 65%)";
     });
 
     card.addEventListener("mouseleave", function () {
